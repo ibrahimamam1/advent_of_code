@@ -15,9 +15,8 @@ int main() {
   }
   
   int result = 0;
-  int cols = MAX_COL;
-  for (size_t i = 0; i < count; i++) {
-    for (size_t j = 0; j < cols; j++) {
+  for (size_t i = 0; i < MAX_ROW; i++) {
+    for (size_t j = 0; j < MAX_COL; j++) {
       if(grid[i][j] != '@') continue;
       
       int rolls = 0;
@@ -26,21 +25,21 @@ int main() {
         rolls++;
       if (i > 0 && grid[i - 1][j] == '@')
         rolls++;
-      if (i > 0 && j + 1 < cols && grid[i - 1][j + 1] == '@')
+      if (i > 0 && j + 1 < MAX_COL && grid[i - 1][j + 1] == '@')
         rolls++;
       
       // Middle row
       if (j > 0 && grid[i][j - 1] == '@')
         rolls++;
-      if (j + 1 < cols && grid[i][j + 1] == '@')
+      if (j + 1 < MAX_COL && grid[i][j + 1] == '@')
         rolls++;
       
       // Bottom row
-      if (i + 1 < count && j > 0 && grid[i + 1][j - 1] == '@')
+      if (i + 1 < MAX_ROW && j > 0 && grid[i + 1][j - 1] == '@')
         rolls++;
-      if (i + 1 < count && grid[i + 1][j] == '@')
+      if (i + 1 < MAX_ROW && grid[i + 1][j] == '@')
         rolls++;
-      if (i + 1 < count && j + 1 < cols && grid[i + 1][j + 1] == '@')
+      if (i + 1 < MAX_ROW && j + 1 < MAX_COL && grid[i + 1][j + 1] == '@')
         rolls++;
       
       if (rolls < 4)
